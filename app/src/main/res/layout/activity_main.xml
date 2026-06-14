@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to DrivePrep"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:textColor="#333"/>
+
+    <ImageView
+        android:id="@+id/imgTrafficSign"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:src="@android:drawable/ic_menu_directions" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Vehicle Type:"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        android:textColor="#555"/>
+
+    <Spinner
+        android:id="@+id/spinnerVehicle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/btn_dropdown"/>
+
+    <Button
+        android:id="@+id/btnStartQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Start Quiz"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFF"/>
+
+    <Button
+        android:id="@+id/btnViewHistory"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="View History"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFF"/>
+
+</LinearLayout>
