@@ -3,15 +3,23 @@ package com.example.myapplication.model;
 public class Question {
     private String questionText;
     private String[] options;
-    private int correctIndex;
+    private int correctAnswerIndex;
 
-    public Question(String questionText, String[] options, int correctIndex) {
+    public Question(String questionText, String[] options, int correctAnswerIndex) {
         this.questionText = questionText;
         this.options = options;
-        this.correctIndex = correctIndex;
+        this.correctAnswerIndex = correctAnswerIndex;
     }
 
-    public String getQuestionText() { return questionText; }
-    public String[] getOptions() { return options; }
-    public int getCorrectIndex() { return correctIndex; }
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public int getCorrectAnswerIndex() {
+        return correctAnswerIndex;
+    }
 }
