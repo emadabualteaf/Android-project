@@ -1,24 +1,27 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import java.util.*;
+import java.util.concurrent.Executors;
 
 public class HistoryActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        ListView listView = findViewById(R.id.listViewHistory);
+        List<String> list = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        listView.setAdapter(adapter);
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+            List<HistoryRecord> records = AppDatabase.getInstance(this).historyDao().getAllHistory();
+            for (HistoryRecord r : records) list.add(r.getVehicleType() + ": " + r.getScore() + "/" + r.getTotalQuestions());
+            runOnUiThread(adapter::notifyDataSetChanged);
         });
     }
 }

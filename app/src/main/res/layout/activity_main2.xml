@@ -1,67 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#F9F9F9">
+    android:padding="24dp"
+    android:background="#F4F6F9">
 
-    <TextView
-        android:id="@+id/tvProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Question: 1/5"
-        android:textSize="16sp"
-        android:textColor="#777"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/tvQuestion"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Loading question..."
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#222"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question: 1/5"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#5C6BC0"
+            android:background="#E8EAF6"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loading question text smoothly..."
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:lineSpacingMultiplier="1.2" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <RadioGroup
         android:id="@+id/rgOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="4dp">
 
         <RadioButton
             android:id="@+id/rbOption1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:padding="16dp"
             android:text="Option 1"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:drawable/btn_default"/>
+            android:textColor="#37474F"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rbOption2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:padding="16dp"
             android:text="Option 2"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:drawable/btn_default"/>
+            android:textColor="#37474F"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rbOption3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:padding="16dp"
             android:text="Option 3"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:drawable/btn_default"/>
-
+            android:textColor="#37474F"
+            android:textSize="16sp" />
     </RadioGroup>
 
     <Space
@@ -72,12 +102,13 @@
     <Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="8dp"
         android:text="Next Question"
-        android:backgroundTint="#FF9800"
-        android:textColor="#FFF"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"/>
+        android:backgroundTint="#3F51B5"
+        android:elevation="4dp" />
 
 </LinearLayout>

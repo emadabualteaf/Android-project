@@ -1,63 +1,66 @@
 package com.example.myapplication.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class QuizEngine {
-
-    private List<Question> questions;
+    private Question[] questions;
     private int currentQuestionIndex = 0;
     private int score = 0;
-    private String vehicleType;
 
     public QuizEngine(String vehicleType) {
-        this.vehicleType = vehicleType;
-        this.questions = new ArrayList<>();
-        generateQuestions();
+        loadQuestions(vehicleType);
     }
 
-    private void generateQuestions() {
-        if ("Truck".equalsIgnoreCase(vehicleType)) {
-            questions.add(new Question("What is the maximum speed limit for a heavy truck on an urban road?", new String[]{"50 km/h", "80 km/h", "90 km/h"}, 0));
-            questions.add(new Question("What should you check before driving a loaded truck down a steep hill?", new String[]{"Air brakes and gear", "The radio volume", "Fuel cap only"}, 0));
-        } else if ("Motorcycle".equalsIgnoreCase(vehicleType)) {
-            questions.add(new Question("Is wearing a helmet mandatory for motorcycle riders?", new String[]{"Only on highways", "Yes, always", "No, it's optional"}, 1));
-            questions.add(new Question("How should you brake effectively on a motorcycle?", new String[]{"Rear brake only", "Front brake only", "Both front and rear brakes evenly"}, 2));
+    private void loadQuestions(String vehicleType) {
+        if (vehicleType == null) vehicleType = "Private Car";
+
+        if (vehicleType.equals("Truck")) {
+            questions = new Question[]{
+                    new Question("What is the maximum speed for a truck in urban areas?", new String[]{"50 km/h", "60 km/h", "80 km/h"}, 0),
+                    new Question("Are truck drivers required to take rest breaks?", new String[]{"No", "Yes, every 4 hours", "Only on weekends"}, 1)
+            };
+        } else if (vehicleType.equals("Motorcycle")) {
+            questions = new Question[]{
+                    new Question("Is a helmet mandatory for motorcycle riders?", new String[]{"Only at night", "No", "Yes, always"}, 2),
+                    new Question("Where should a motorcycle ride on a lane?", new String[]{"On the right side", "Where visibility is best", "On the sidewalk"}, 1)
+            };
         } else {
-            // Default: Private Car
-            questions.add(new Question("What does a flashing red traffic light mean?", new String[]{"Slow down", "Stop completely, then proceed when safe", "Accelerate quickly"}, 1));
-            questions.add(new Question("What is the legal blood alcohol limit for young drivers?", new String[]{"0.0%", "0.05%", "0.08%"}, 0));
+            questions = new Question[]{
+                    new Question("What does a red traffic light mean?", new String[]{"Go", "Stop", "Slow down"}, 1),
+                    new Question("When should you use high beams?", new String[]{"In heavy traffic", "On unlit roads", "Always at night"}, 1)
+            };
         }
     }
 
     public Question getCurrentQuestion() {
-        if (currentQuestionIndex < questions.size()) {
-            return questions.get(currentQuestionIndex);
-        }
-        return null;
-    }
-
-    public void checkAnswer(int selectedIndex) {
-        Question current = getCurrentQuestion();
-        if (current != null && selectedIndex == current.getCorrectAnswerIndex()) {
-            score++;
-        }
+        return (questions != null && currentQuestionIndex < questions.length) ? questions[currentQuestionIndex] : null;
     }
 
     public boolean nextQuestion() {
-        currentQuestionIndex++;
-        return currentQuestionIndex < questions.size();
+        if (questions != null && currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            return true;
+        }
+        return false;
     }
 
-    public int getScore() {
-        return score;
+    public boolean checkAnswer(int selectedOptionIndex) {
+        if (questions != null && currentQuestionIndex < questions.length) {
+            if (questions[currentQuestionIndex].getCorrectAnswerIndex() == selectedOptionIndex) {
+                score++;
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getCurrentQuestionIndex() {
         return currentQuestionIndex;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public int getTotalQuestions() {
-        return questions.size();
+        return (questions != null) ? questions.length : 0;
     }
 }
