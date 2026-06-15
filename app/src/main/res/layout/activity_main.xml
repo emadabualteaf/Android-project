@@ -79,18 +79,8 @@
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/btnHistory"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:text="📊   View Quiz History"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#424242"
-        android:backgroundTint="#E0E0E0"
-        android:elevation="0dp" />
-    <Button
         android:id="@+id/btnViewHistory"
-        android:layout_width="wrap_content"
+        android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:text="View History" />
 

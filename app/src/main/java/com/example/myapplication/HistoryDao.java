@@ -7,9 +7,13 @@ import java.util.List;
 
 @Dao
 public interface HistoryDao {
+
     @Insert
     void insertRecord(HistoryRecord record);
 
     @Query("SELECT * FROM quiz_history ORDER BY id DESC")
     List<HistoryRecord> getAllHistory();
+
+    @Query("DELETE FROM quiz_history")
+    void clearAllHistory();
 }

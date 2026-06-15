@@ -27,10 +27,9 @@
         android:layout_marginBottom="16dp"/>
 
     <Button
-        android:id="@+id/btnClearHistory"
+        android:id="@+id/btnClear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear History"
-        android:backgroundTint="#FF3333"
-        android:textColor="#FFFFFF"/>
+        android:backgroundTint="@android:color/holo_red_dark" />
 </LinearLayout>
